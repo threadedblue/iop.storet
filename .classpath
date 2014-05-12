@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/test/resources"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/iop/iop.account/0.0.1-SNAPSHOT/iop.account-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/accumulo/accumulo-core/1.5.1/accumulo-core-1.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/accumulo/accumulo-fate/1.5.1/accumulo-fate-1.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/accumulo/accumulo-start/1.5.1/accumulo-start-1.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/accumulo/accumulo-trace/1.5.1/accumulo-trace-1.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-client/2.3.0/hadoop-client-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/zookeeper/zookeeper/3.4.5/zookeeper-3.4.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.2/2d23694879c2c12f125dac5076bdfd5d771cc4cb/logback-core-1.1.2.jar" sourcepath="/Users/gcr/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.2/502e1c764542fe747896c1dc04f023acfe0e5cbc/logback-core-1.1.2-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.2/b316e9737eea25e9ddd6d88eaeee76878045c6b2/logback-classic-1.1.2.jar" sourcepath="/Users/gcr/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.2/decd76e2c461157804473468bbdc6b8eb6d6121b/logback-classic-1.1.2-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/emf/org.eclipse.emf/2.6.0/org.eclipse.emf-2.6.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/emf/org.eclipse.emf.common/2.9.1/org.eclipse.emf.common-2.9.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/emf/org.eclipse.emf.ecore/2.9.1/org.eclipse.emf.ecore-2.9.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/emf/org.eclipse.emf.ecore.xmi/2.9.1/org.eclipse.emf.ecore.xmi-2.9.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/lpg.runtime.java/2.0.17/lpg.runtime.java-2.0.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/org.eclipse.ocl/3.3.0/org.eclipse.ocl-3.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/org.eclipse.ocl.common/1.1.0/org.eclipse.ocl.common-1.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/org.eclipse.ocl.ecore/3.3.0/org.eclipse.ocl.ecore-3.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/org.openhealthtools.mdht.emf.runtime/1.0.0/org.openhealthtools.mdht.emf.runtime-1.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/org.openhealthtools.mdht.uml.cda/1.2.0/org.openhealthtools.mdht.uml.cda-1.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/org.openhealthtools.mdht.uml.hl7.datatypes/1.2.0/org.openhealthtools.mdht.uml.hl7.datatypes-1.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/org.openhealthtools.mdht.uml.hl7.rim/1.2.0/org.openhealthtools.mdht.uml.hl7.rim-1.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/openhealthtools/mdht/org.openhealthtools.mdht.uml.hl7.vocab/1.2.0/org.openhealthtools.mdht.uml.hl7.vocab-1.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/junit/junit/4.11/junit-4.11.jar" sourcepath="/Users/gcr/.m2/repository/junit/junit/4.11/junit-4.11-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/jline/jline/0.9.94/jline-0.9.94.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.gradle/caches/modules-2/files-2.1/org.jboss.netty/netty/3.2.2.Final/d4afed2b2038db3f5298da54314575ef194f8bd0/netty-3.2.2.Final.jar" sourcepath="/Users/gcr/.gradle/caches/modules-2/files-2.1/org.jboss.netty/netty/3.2.2.Final/1a9960822301de2d5cf35d4d87e9c6cce1bcf1fd/netty-3.2.2.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.6/562424e36df3d2327e8e9301a76027fca17d54ea/slf4j-api-1.7.6.jar" sourcepath="/Users/gcr/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.6/97bb93c1badeae97a3d37e3c902df2985ee3de34/slf4j-api-1.7.6-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/slf4j/slf4j-log4j12/1.7.5/slf4j-log4j12-1.7.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-annotations/2.3.0/hadoop-annotations-2.3.0.jar" sourcepath="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-annotations/2.3.0/hadoop-annotations-2.3.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/google/guava/guava/11.0.2/guava-11.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-cli/commons-cli/1.2/commons-cli-1.2.jar" sourcepath="/Users/gcr/.m2/repository/commons-cli/commons-cli/1.2/commons-cli-1.2-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/commons/commons-math3/3.1.1/commons-math3-3.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/xmlenc/xmlenc/0.52/xmlenc-0.52.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-beanutils/commons-beanutils-core/1.8.0/commons-beanutils-core-1.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/commons-configuration/commons-configuration/1.6/commons-configuration-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.8.8/jackson-core-asl-1.8.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.8.8/jackson-mapper-asl-1.8.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/tukaani/xz/1.0/xz-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/commons/commons-compress/1.4.1/commons-compress-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/thoughtworks/paranamer/paranamer/2.3/paranamer-2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/xerial/snappy/snappy-java/1.0.4.1/snappy-java-1.0.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/avro/avro/1.7.4/avro-1.7.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/google/protobuf/protobuf-java/2.5.0/protobuf-java-2.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/httpcomponents/httpcore/4.2.4/httpcore-4.2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/httpcomponents/httpclient/4.2.5/httpclient-4.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-auth/2.3.0/hadoop-auth-2.3.0.jar" sourcepath="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-auth/2.3.0/hadoop-auth-2.3.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-common/2.3.0/hadoop-common-2.3.0.jar" sourcepath="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-common/2.3.0/hadoop-common-2.3.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/mortbay/jetty/jetty-util/6.1.26/jetty-util-6.1.26.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-hdfs/2.3.0/hadoop-hdfs-2.3.0.jar" sourcepath="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-hdfs/2.3.0/hadoop-hdfs-2.3.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-yarn-api/2.3.0/hadoop-yarn-api-2.3.0.jar" sourcepath="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-yarn-api/2.3.0/hadoop-yarn-api-2.3.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/sun/jersey/jersey-core/1.9/jersey-core-1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/asm/asm/3.1/asm-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.gradle/caches/modules-2/files-2.1/org.sonatype.sisu.inject/cglib/2.2.1-v20090111/7ce5e983fd0e6c78346f4c9cbfa39d83049dda2/cglib-2.2.1-v20090111.jar" sourcepath="/Users/gcr/.gradle/caches/modules-2/files-2.1/org.sonatype.sisu.inject/cglib/2.2.1-v20090111/65030c30094de36e3fddbc22442d47cbf547741f/cglib-2.2.1-v20090111-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/google/inject/guice/3.0/guice-3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/sun/jersey/jersey-server/1.9/jersey-server-1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/codehaus/jettison/jettison/1.1/jettison-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/sun/xml/bind/jaxb-impl/2.2.3-1/jaxb-impl-2.2.3-1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/codehaus/jackson/jackson-jaxrs/1.8.3/jackson-jaxrs-1.8.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/codehaus/jackson/jackson-xc/1.8.3/jackson-xc-1.8.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/sun/jersey/jersey-json/1.9/jersey-json-1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/sun/jersey/contribs/jersey-guice/1.9/jersey-guice-1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-yarn-common/2.3.0/hadoop-yarn-common-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-mapreduce-client-core/2.3.0/hadoop-mapreduce-client-core-2.3.0.jar" sourcepath="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-mapreduce-client-core/2.3.0/hadoop-mapreduce-client-core-2.3.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-yarn-client/2.3.0/hadoop-yarn-client-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-yarn-server-common/2.3.0/hadoop-yarn-server-common-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-mapreduce-client-common/2.3.0/hadoop-mapreduce-client-common-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/com/sun/jersey/jersey-client/1.9/jersey-client-1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-yarn-server-nodemanager/2.3.0/hadoop-yarn-server-nodemanager-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-mapreduce-client-shuffle/2.3.0/hadoop-mapreduce-client-shuffle-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-mapreduce-client-app/2.3.0/hadoop-mapreduce-client-app-2.3.0.jar" sourcepath="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-mapreduce-client-app/2.3.0/hadoop-mapreduce-client-app-2.3.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-mapreduce-client-jobclient/2.3.0/hadoop-mapreduce-client-jobclient-2.3.0.jar" sourcepath="/Users/gcr/.m2/repository/org/apache/hadoop/hadoop-mapreduce-client-jobclient/2.3.0/hadoop-mapreduce-client-jobclient-2.3.0-sources.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/accumulo.driver"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/iop.storet.accumuloemf"/>
+	<classpathentry kind="src" path="/accumulo.provider"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
