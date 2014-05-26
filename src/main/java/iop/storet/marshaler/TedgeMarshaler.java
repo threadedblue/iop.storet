@@ -1,6 +1,6 @@
 package iop.storet.marshaler;
 
-public interface TedgeMarshaller {
+public interface TedgeMarshaler {
 	
 	public static final String ACCOUNT_NO_FORMAT = "0000000000000000";
 

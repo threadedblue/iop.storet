@@ -7,7 +7,7 @@ import iop.storet.accumuloemf.XML2Tedge;
 import iop.storet.accumuloemf.builders.TedgeEMFcoderImpl;
 import iop.storet.accumuloemf.builders.XML2TedgeImpl;
 import iop.storet.accumuloemf.util.C;
-import iop.storet.marshaler.TedgeMarshaller;
+import iop.storet.marshaler.TedgeMarshaler;
 
 import java.io.Reader;
 import java.io.StringReader;
@@ -25,16 +25,15 @@ import org.xml.sax.InputSource;
 
 import accumulo.provider.AccumuloProvider;
 
-public class TedgeMarshalerImpl implements Runnable, TedgeMarshaller {
+public class TedgeMarshalerImpl implements Runnable, TedgeMarshaler {
 	
 	private static final Logger log = LoggerFactory.getLogger(TedgeMarshalerImpl.class);
 
 	private static AccumuloProvider provider;
-	Connector conn;
+
 	String scd;
 	
-	public TedgeMarshalerImpl(AccumuloProvider provider, String scd) {
-		this.conn = provider.getConnection();
+	public TedgeMarshalerImpl(String scd) {
 		Account acct = AccountFactory.eINSTANCE.createAccount();
 		this.scd = scd;
 	}
@@ -44,9 +43,8 @@ public class TedgeMarshalerImpl implements Runnable, TedgeMarshaller {
 	 */
 	@Override
 	public void run() {
+		Connector conn = provider.getConnection();
 		Account acct = AccountFactory.eINSTANCE.createAccount();
-		Reader reader = new StringReader(scd);
-		InputSource is = new InputSource(reader);
 		String documentId = null;
 		try {
 			documentId = getDocumentId(scd);

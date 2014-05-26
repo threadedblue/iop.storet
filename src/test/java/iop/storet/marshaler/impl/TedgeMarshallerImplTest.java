@@ -19,27 +19,25 @@ import org.slf4j.LoggerFactory;
 import accumulo.provider.AccumuloProvider;
 import accumulo.provider.impl.AccumuloProviderImpl;
 
-public class TedgeMarshalerImplTest {
+public class TedgeMarshallerImplTest {
 	
 	private static final Logger log = LoggerFactory
-			.getLogger(TedgeMarshalerImplTest.class);
+			.getLogger(TedgeMarshallerImplTest.class);
 	static final String path = "/Users/gcr/git/osgiWorkspace/ERHWorkarea/sample-ccdas";
 	TedgeMarshalerImpl app;
 	static List<File> files;
-	static AccumuloProvider provider;
 	String scd;
 	
 	@BeforeClass
 	public static void oneTimeSetUp() {
 		File root = new File(path);
 		files = listFiles(new ArrayList<File>(), root);
-		provider = new AccumuloProviderImpl();
 	}
 	
 	@Before
 	public void setUp() {
 		scd = readCCD(files.get(0));
-		app = new TedgeMarshalerImpl(provider, scd);
+		app = new TedgeMarshalerImpl(scd);
 	}
 
 	@Test
