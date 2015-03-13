@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
+  <info organisation="iop" module="iop.storet" revision="0.0.3" status="integration" publication="20150102093225">
+    <description/>
+  </info>
+  <configurations>
+    <conf name="archives" visibility="public" description="Configuration for archive artifacts."/>
+    <conf name="compile" visibility="private" description="Compile classpath for source set 'main'."/>
+    <conf name="default" visibility="public" description="Configuration for default artifacts." extends="runtime"/>
+    <conf name="runtime" visibility="private" description="Runtime classpath for source set 'main'." extends="compile"/>
+    <conf name="testCompile" visibility="private" description="Compile classpath for source set 'test'." extends="compile"/>
+    <conf name="testRuntime" visibility="private" description="Runtime classpath for source set 'test'." extends="runtime,testCompile"/>
+  </configurations>
+  <publications>
+    <artifact name="iop.storet" type="jar" ext="jar" conf="archives,runtime"/>
+  </publications>
+  <dependencies>
+    <dependency org="iop" name="iop.accumulo.d4m.151" rev="1.5.1" conf="compile-&gt;default"/>
+    <dependency org="iop" name="iop.storet.accumulod4m" rev="1.0.1" conf="compile-&gt;default"/>
+    <dependency org="iop" name="iop.tictoc" rev="1.2.0" conf="compile-&gt;default"/>
+    <dependency org="args4j" name="args4j" rev="2.0.29" conf="compile-&gt;default"/>
+    <dependency org="accumulo" name="accumulo-core" rev="1.5.1" conf="compile-&gt;default"/>
+    <dependency org="accumulo" name="accumulo-fate" rev="1.5.1" conf="compile-&gt;default"/>
+    <dependency org="accumulo" name="accumulo-start" rev="1.5.1" conf="compile-&gt;default"/>
+    <dependency org="accumulo" name="accumulo-trace" rev="1.5.1" conf="compile-&gt;default"/>
+    <dependency org="org.apache.hadoop" name="hadoop-client" rev="2.3.0" conf="compile-&gt;default"/>
+    <dependency org="org.apache.zookeeper" name="zookeeper" rev="3.4.5" conf="compile-&gt;default"/>
+    <dependency org="dom4j" name="dom4j" rev="1.6.1" conf="compile-&gt;default"/>
+    <dependency org="ch.qos.logback" name="logback-core" rev="1.1.2" conf="compile-&gt;default"/>
+    <dependency org="ch.qos.logback" name="logback-classic" rev="1.1.2" conf="compile-&gt;default"/>
+    <dependency org="emf" name="org.eclipse.emf" rev="2.6.0" conf="compile-&gt;default"/>
+    <dependency org="emf" name="org.eclipse.emf.common" rev="2.9.1" conf="compile-&gt;default"/>
+    <dependency org="emf" name="org.eclipse.emf.ecore" rev="2.9.1" conf="compile-&gt;default"/>
+    <dependency org="emf" name="org.eclipse.emf.ecore.xmi" rev="2.9.1" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="lpg.runtime.java" rev="2.0.17" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="org.eclipse.ocl" rev="3.3.0" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="org.eclipse.ocl.common" rev="1.1.0" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="org.eclipse.ocl.ecore" rev="3.3.0" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="org.openhealthtools.mdht.emf.runtime" rev="1.0.0" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="org.openhealthtools.mdht.uml.cda" rev="1.2.0" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="org.openhealthtools.mdht.uml.hl7.datatypes" rev="1.2.0" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="org.openhealthtools.mdht.uml.hl7.rim" rev="1.2.0" conf="compile-&gt;default"/>
+    <dependency org="openhealthtools" name="org.openhealthtools.mdht.uml.hl7.vocab" rev="1.2.0" conf="compile-&gt;default"/>
+    <dependency org="commons-collections" name="commons-collections" rev="3.2" conf="compile-&gt;default"/>
+    <dependency org="junit" name="junit" rev="4.+" conf="testCompile-&gt;default"/>
+  </dependencies>
+</ivy-module>
