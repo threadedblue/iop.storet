@@ -1,4 +1,4 @@
-package iop.storet;
+package iop.ccd2d4m;
 
 import iop.ccd.shread.RowColVal;
 import iop.ccd.shread.XML2Set;

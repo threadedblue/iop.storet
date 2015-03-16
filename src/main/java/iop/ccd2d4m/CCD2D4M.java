@@ -1,18 +1,22 @@
-package iop.storet;
+package iop.ccd2d4m;
 
-
-import iop.ccd.prep.XSLTProcessor;
 import iop.ccd.shread.RowsColsVals;
 import iop.ccd.shread.XML2Set;
 import iop.ccd.shread.impl.AbstractXML2SetImpl;
 import iop.ccd.shread.impl.XML2PathSetImpl;
 import iop.ccd.shread.util.C;
-import iop.ccd.shread.util.CCDUtils;
 import iop.ccd.shread.util.U;
 import iop.tictoc.TicToc;
 import iop.tictoc.impl.TicTocImpl;
+import iop.xslt.XSLTProcessor;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.dom4j.Document;
 import org.kohsuke.args4j.CmdLineException;
@@ -23,6 +27,7 @@ import org.slf4j.LoggerFactory;
 
 import edu.mit.ll.cloud.connection.ConnectionProperties;
 import edu.mit.ll.d4m.db.cloud.D4mException;
+import edu.mit.ll.d4m.db.cloud.accumulo.AccumuloConnection;
 import edu.mit.ll.d4m.db.cloud.accumulo.AccumuloInsert;
 import edu.mit.ll.d4m.db.cloud.accumulo.AccumuloTableOperations;
 
@@ -31,8 +36,6 @@ public class CCD2D4M implements Runnable {
 	private static final Logger log = LoggerFactory.getLogger(CCD2D4M.class);
 
 	private CmdLineParser CLI = new CmdLineParser(this);
-
-	private CCDUtils utilC = new CCDUtils();
 
 	@Option(name = "-i", aliases = "--instance", required = true, usage = "Accumulo instance name")
 	private String instance;
@@ -61,8 +64,8 @@ public class CCD2D4M implements Runnable {
 	@Option(name = "-f", aliases = "--path", required = true, usage = "Path to the directory or file.")
 	private String path;
 
-	@Option(name = "-t", aliases = "--stops", required = false, usage = "Delimited list of element names not to use. Last character is the delimiter. Do not use space.")
-	private String stops;
+	@Option(name = "-x", aliases = "--style", required = false, usage = "XSL file name")
+	private String xsl;
 
 	@Option(name = "-z", aliases = "--size", required = true, usage = "Size to sample,-1 sampes all.")
 	private int size;
@@ -75,21 +78,36 @@ public class CCD2D4M implements Runnable {
 	AccumuloInsert ins;
 	AccumuloInsert insT;
 	AccumuloInsert insDeg;
+	AccumuloInsert insTxt;
 
 	int documentCount;
 	int elementCount;
+
+	XSLTProcessor xslt;
 
 	public CCD2D4M(String[] args) throws CmdLineException {
 		super();
 		try {
 			CLI.parseArgument(args);
+			ConnectionProperties props = new ConnectionProperties();
+			props.setInstanceName(instance);
+			props.setHost(host);
+			props.setUser(user);
+			props.setPass(password);
+			props.setMaxNumThreads(50);
+			AccumuloConnection conn = new AccumuloConnection(props);
 			tab = stem;
+			ins = new AccumuloInsert(props, tab);
+			conn.createTable(tab);
 			tabT = stem + C.TRANSFORM;
+			insT = new AccumuloInsert(props, tabT);
+			conn.createTable(tabT);
 			tabDeg = stem + C.DEGREE;
+			insDeg = new AccumuloInsert(props, tabDeg);
+			conn.createTable(tabDeg);
 			tabTxt = stem + C.TEXT;
-			ins = new AccumuloInsert(instance, host, tab, user, password);
-			insT = new AccumuloInsert(instance, host, tabT, user, password);
-			insDeg = new AccumuloInsert(instance, host, tabDeg, user, password);
+			insTxt = new AccumuloInsert(props, tabTxt);
+			conn.createTable(tabTxt);
 		} catch (CmdLineException e) {
 			CLI.printUsage(System.out);
 			throw e;
@@ -98,12 +116,13 @@ public class CCD2D4M implements Runnable {
 
 	public void run() {
 		File fileList = new File(path);
-		File[] list = CollectionSampler.assembleRands(size, fileList);
+		File[] list = fileList.listFiles();
 		ConnectionProperties props = new ConnectionProperties();
 		props.setInstanceName(instance);
 		props.setHost(host);
 		props.setUser(user);
 		props.setPass(password);
+
 		props.setMaxNumThreads(10);
 		AccumuloTableOperations ops = new AccumuloTableOperations(props);
 		try {
@@ -123,11 +142,10 @@ public class CCD2D4M implements Runnable {
 	}
 
 	void insertCCD(File file) {
-		String ccd = (String) utilC.readCCD(file);
-		Document doc = AbstractXML2SetImpl.parse(ccd);
-		Document tranformedDoc = transformDoc(doc);
-		XML2Set xml2Set = new XML2PathSetImpl(tranformedDoc, U.getEndian(endian),
-				U.getSansroot(sansroot), dblLogi);
+		String ccd = readFileContents(file);
+		Document tranformedDoc = transformDoc(ccd);
+		XML2Set xml2Set = new XML2PathSetImpl(tranformedDoc,
+				U.getEndian(endian), U.getSansroot(sansroot), dblLogi);
 		RowsColsVals rcvs = xml2Set.build();
 		elementCount += rcvs.size();
 		String[] rcv4Ingest = null;
@@ -140,14 +158,54 @@ public class CCD2D4M implements Runnable {
 		insDeg.doProcessing(rcv4Degree[C.ROW], rcv4Degree[C.COL],
 				rcv4Degree[C.VAL], "", "");
 	}
-	
+
+	Document transformDoc(String ccd) {
+		Document doc = AbstractXML2SetImpl.parse(ccd);
+		return transformDoc(doc);
+	}
+
 	Document transformDoc(Document doc) {
-		XSLTProcessor xslt = new XSLTProcessor("");
+		XSLTProcessor xslt = null;
+		xslt = getXSLTProcessor();
 		return xslt.run(doc);
 	}
-	
+
+	XSLTProcessor getXSLTProcessor() {
+		try {
+			if (xslt == null) {
+				String xslContents = readFileContents(xsl);
+				xslt = new XSLTProcessor(xslContents);
+			}
+		} catch (URISyntaxException e) {
+			log.error("", e);
+		}
+		return xslt;
+	}
+
 	String lastCharOf(String s) {
-		return s.substring(s.length() -1);
+		return s.substring(s.length() - 1);
+	}
+
+	public String readFileContents(String filename) throws URISyntaxException {
+		log.debug("filename=" + filename);
+		URL url = getClass().getClassLoader().getResource(filename);
+		log.debug("url=" + url);
+		return readFileContents(url.toURI());
+	}
+
+	public String readFileContents(File filename) {
+		java.net.URI uri = filename.toURI();
+		return readFileContents(uri);
+	}
+
+	public String readFileContents(URI uri) {
+		String s = null;
+		try {
+			s = new String(Files.readAllBytes(Paths.get(uri)));
+		} catch (IOException e) {
+			log.error("", e);
+		}
+		return s;
 	}
 
 	String[] assemble4Degree(String[] rcv) {
