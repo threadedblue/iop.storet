@@ -11,7 +11,7 @@ defaultTasks 'ccd2d4m'
 task(ccd2d4m, dependsOn: 'classes', type: JavaExec) {
 	main = 'iop.ccd2d4m.CCD2D4M'
 	classpath = sourceSets.main.runtimeClasspath
-	args '-i', 'accumulo', '-h', 'localhost:2181', '-u', 'evolent', '-m', 'ccd', '-s', '-l', '-f', '/Users/gcr/Evolent/ccd-sample2-unzip', '-z', '-1', '-x', 'strip-text.xsl' 
+	args '-i', 'accumulo', '-h', 'localhost:2181', '-u', 'evolent', '-m', 'ccd', '-l', '-f', '/Users/gcr/Evolent/ccd-sample2-unzip', '-x', 'strip-text.xsl' 
 }
 
 jar {
