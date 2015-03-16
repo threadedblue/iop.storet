@@ -52,12 +52,6 @@ public class CCD2D4M implements Runnable {
 	@Option(name = "-m", aliases = "--stem", required = true, usage = "Stem value for D4M table names")
 	private String stem;
 
-	@Option(name = "-s", aliases = "--sansroot", required = false, usage = "Construct without path root.")
-	private boolean sansroot;
-
-	@Option(name = "-e", aliases = "--endian", required = false, usage = "Construct T big or F little endian values.")
-	private boolean endian;
-
 	@Option(name = "-l", aliases = "--dblogi", required = false, usage = "Contruct input for dblLogi.")
 	private boolean dblLogi;
 
@@ -66,9 +60,6 @@ public class CCD2D4M implements Runnable {
 
 	@Option(name = "-x", aliases = "--style", required = false, usage = "XSL file name")
 	private String xsl;
-
-	@Option(name = "-z", aliases = "--size", required = true, usage = "Size to sample,-1 sampes all.")
-	private int size;
 
 	private final String tab;
 	private final String tabT;
@@ -144,8 +135,7 @@ public class CCD2D4M implements Runnable {
 	void insertCCD(File file) {
 		String ccd = readFileContents(file);
 		Document tranformedDoc = transformDoc(ccd);
-		XML2Set xml2Set = new XML2PathSetImpl(tranformedDoc,
-				U.getEndian(endian), U.getSansroot(sansroot), dblLogi);
+		XML2Set xml2Set = new XML2PathSetImpl(tranformedDoc);
 		RowsColsVals rcvs = xml2Set.build();
 		elementCount += rcvs.size();
 		String[] rcv4Ingest = null;
