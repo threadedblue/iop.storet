@@ -1,11 +1,11 @@
 package iop.ccd2d4m;
 
+import iop.ccd.shread.RowColVal;
 import iop.ccd.shread.RowsColsVals;
 import iop.ccd.shread.XML2Set;
 import iop.ccd.shread.impl.AbstractXML2SetImpl;
 import iop.ccd.shread.impl.XML2PathSetImpl;
 import iop.ccd.shread.util.C;
-import iop.ccd.shread.util.U;
 import iop.tictoc.TicToc;
 import iop.tictoc.impl.TicTocImpl;
 import iop.xslt.XSLTProcessor;
@@ -72,6 +72,7 @@ public class CCD2D4M implements Runnable {
 	AccumuloInsert insTxt;
 
 	int documentCount;
+	int elementCountper;
 	int elementCount;
 
 	XSLTProcessor xslt;
@@ -88,16 +89,16 @@ public class CCD2D4M implements Runnable {
 			props.setMaxNumThreads(50);
 			AccumuloConnection conn = new AccumuloConnection(props);
 			tab = stem;
-			ins = new AccumuloInsert(props, tab);
+			ins = new AccumuloInsert(props.getInstanceName(), props.getHost(), tab, props.getUser(), props.getPass());
 			conn.createTable(tab);
 			tabT = stem + C.TRANSFORM;
-			insT = new AccumuloInsert(props, tabT);
+			insT = new AccumuloInsert(props.getInstanceName(), props.getHost(), tabT, props.getUser(), props.getPass());
 			conn.createTable(tabT);
 			tabDeg = stem + C.DEGREE;
-			insDeg = new AccumuloInsert(props, tabDeg);
+			insDeg = new AccumuloInsert(props.getInstanceName(), props.getHost(), tabDeg, props.getUser(), props.getPass());
 			conn.createTable(tabDeg);
 			tabTxt = stem + C.TEXT;
-			insTxt = new AccumuloInsert(props, tabTxt);
+			insTxt = new AccumuloInsert(props.getInstanceName(), props.getHost(), tabTxt, props.getUser(), props.getPass());
 			conn.createTable(tabTxt);
 		} catch (CmdLineException e) {
 			CLI.printUsage(System.out);
@@ -137,7 +138,8 @@ public class CCD2D4M implements Runnable {
 		Document tranformedDoc = transformDoc(ccd);
 		XML2Set xml2Set = new XML2PathSetImpl(tranformedDoc);
 		RowsColsVals rcvs = xml2Set.build();
-		elementCount += rcvs.size();
+		elementCountper = rcvs.size();
+		elementCount += elementCountper;
 		String[] rcv4Ingest = null;
 		rcv4Ingest = rcvs.assemble4Ingest();
 		ins.doProcessing(rcv4Ingest[C.ROW], rcv4Ingest[C.COL],
@@ -210,6 +212,7 @@ public class CCD2D4M implements Runnable {
 	void heartBeat() {
 		if (documentCount % 100 == 0) {
 			log.info("documents=" + documentCount);
+			log.info("elements per=" + elementCountper);
 			log.info("elements=" + elementCount);
 		}
 	}

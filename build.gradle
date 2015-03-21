@@ -6,9 +6,9 @@ sourceCompatibility = 1.7
 version = '0.0.3'
 group 'iop'
 
-defaultTasks 'ccd2d4m'
+defaultTasks 'exe'
 
-task(ccd2d4m, dependsOn: 'classes', type: JavaExec) {
+task(exe, dependsOn: 'classes', type: JavaExec) {
 	main = 'iop.ccd2d4m.CCD2D4M'
 	classpath = sourceSets.main.runtimeClasspath
 	args '-i', 'accumulo', '-h', 'localhost:2181', '-u', 'evolent', '-m', 'ccd', '-l', '-f', '/Users/gcr/Evolent/ccd-sample2-unzip', '-x', 'strip-text.xsl' 
@@ -28,15 +28,17 @@ repositories {
 dependencies {
 	compile 'iop:iop.xslt:1.0.0'
 	compile 'iop:iop.ccd.shread:1.0.2'
-	compile 'iop:iop.accumulo.d4m:1.6.2.0'
+	compile 'd4m:D4M_API_JAVA:2.5.0'
+	compile 'd4m:D4M_API_JAVA_AC:2.5.0'
 	compile 'iop:iop.tictoc:1.2.0'
 	compile 'args4j:args4j:2.0.29'
-	compile 'accumulo:accumulo-core:1.6.2'
-	compile 'accumulo:accumulo-fate:1.6.2'
-	compile 'accumulo:accumulo-start:1.6.2'
-	compile 'accumulo:accumulo-trace:1.6.2'
+	compile 'accumulo:accumulo-core:1.5.1'
+	compile 'accumulo:accumulo-fate:1.5.1'
+	compile 'accumulo:accumulo-start:1.5.1'
+	compile 'accumulo:accumulo-trace:1.5.1'
 	compile 'org.apache.hadoop:hadoop-client:2.3.0'
 	compile 'org.apache.zookeeper:zookeeper:3.4.5'
+	compile 'org.apache.thrift:libthrift:0.9.0'
 	compile 'dom4j:dom4j:1.6.1'
 	compile 'ch.qos.logback:logback-core:1.1.2'
 	compile 'ch.qos.logback:logback-classic:1.1.2'  
