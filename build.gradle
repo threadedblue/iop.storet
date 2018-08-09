@@ -1,18 +1,24 @@
-apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'java-library'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 
-sourceCompatibility = 1.7
-version = '0.0.3'
-group 'iop'
+applicationName = 'xml2xpath'
+sourceCompatibility = 1.8
+mainClassName = 'iox.xml2xpath.XML2XPathDriver'
+version = '0.0.1'
+group 'iox'
 
-defaultTasks 'exe'
-
-task(exe, dependsOn: 'classes', type: JavaExec) {
-	main = 'iop.ccd2d4m.CCD2D4M'
-	classpath = sourceSets.main.runtimeClasspath
-	args '-i', 'accumulo', '-h', 'localhost:2181', '-u', 'evolent', '-m', 'ccd', '-l', '-f', '/Users/gcr/Evolent/ccd-sample2-unzip', '-x', 'strip-text.xsl' 
+configure(install.repositories.mavenInstaller) {
+    pom.project {
+        groupId group
+        artifactId applicationName
+        inceptionYear '2018'
+        packaging 'jar'
+    }
 }
+
+def jarFile = buildDir.name + "/libs/" + applicationName + "-" + version + ".jar"
 
 jar {
     manifest {
@@ -21,33 +27,66 @@ jar {
 }
 
 repositories {
-	maven {url 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath;}
-	maven {url 'http://repo1.maven.org/maven2'}
+    jcenter()
+    maven {url 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath;}
 }
 
 dependencies {
-	compile 'iop:iop.xslt:1.0.0'
-	compile 'iop:iop.ccd.shread:1.0.2'
-	compile 'd4m:D4M_API_JAVA:2.5.0'
-	compile 'd4m:D4M_API_JAVA_AC:2.5.0'
-	compile 'iop:iop.tictoc:1.2.0'
-	compile 'args4j:args4j:2.0.29'
-	compile 'accumulo:accumulo-core:1.5.1'
-	compile 'accumulo:accumulo-fate:1.5.1'
-	compile 'accumulo:accumulo-start:1.5.1'
-	compile 'accumulo:accumulo-trace:1.5.1'
-	compile 'org.apache.hadoop:hadoop-client:2.3.0'
-	compile 'org.apache.zookeeper:zookeeper:3.4.5'
-	compile 'org.apache.thrift:libthrift:0.9.0'
-	compile 'dom4j:dom4j:1.6.1'
-	compile 'ch.qos.logback:logback-core:1.1.2'
-	compile 'ch.qos.logback:logback-classic:1.1.2'  
-	compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-    testCompile group: 'junit', name: 'junit', version: '4.+'
+	api "iox:iox.tictoc:1.2.0"
+    api "iox.d4m:accumulo.d4m:0.0.1"
+    api "iox.accumulo:accumulo.access:0.0.1"
+    api "args4j:args4j:2.33"
+    api "iox:iox.utils:1.1.0"
+	
+	// Hazoo
+    api "org.apache.accumulo:accumulo-core:${accver}"
+    api "org.apache.accumulo:accumulo-fate:${accver}"
+    api "org.apache.accumulo:accumulo-start:${accver}"
+    api "org.apache.accumulo:accumulo-trace:${accver}"
+    api "org.apache.hadoop:hadoop-client:${hadver}"
+    api "org.apache.zookeeper:zookeeper:${zoover}"
+	
+	// XML 
+	api "iox.xml:iox.input.mr:0.0.1"
+    api "org.apache.logging.log4j:log4j-slf4j-impl:${logver}" 
+	api group: "commons-collections", name: "commons-collections", version: "3.2"
+	
+    testCompile "junit:junit:4.+"
 }
 
 test {
     systemProperties 'property': 'value'
+}
+
+task bundle {
+    dependsOn jar
+    inputs.file jarFile
+    outputs.dir "${applicationName}"
+   doLast{ 
+      copy {
+            from "${buildDir}/libs"
+            into "${applicationName}"
+            fileMode = 0777
+        }
+       copy {
+            from "conf/"
+            into "${applicationName}/conf"
+        }
+       copy {
+            from configurations.runtimeClasspath
+            into "${applicationName}/lib"
+        }
+   }
+}
+
+jar {
+    // Keep jar clean:
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
+    manifest {
+        attributes ('Implementation-Title' : 'XML 2 XPath',
+                   'Implementation-Version': version,
+                   'Main-Class': mainClassName,
+                   'Class-Path': ' lib/' + configurations.runtimeClasspath.collect { it.getName() }.join(' lib/'))
 }
 
 uploadArchives {
@@ -56,4 +95,5 @@ uploadArchives {
            dirs 'repos'
        }
     }
+}
 }
