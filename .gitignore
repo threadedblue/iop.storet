@@ -3,3 +3,7 @@ build/
 target/
 *.log
 /.gradle/
+repos/
+attic/
+logs/
+xml2xpath/
