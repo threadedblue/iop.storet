@@ -1,0 +1,10 @@
+# RDF2D4M configuration file
+---
+args:
+  i: "/ccd/evrdf"
+  l: "accumulo"
+  zk: "haz00:2181"
+  fs: "hdfs://haz00:9000"
+  t: "evccd"
+  ow: "true"
+accumuloCreds: "file:///home/haz/accumulo-creds.yml"
