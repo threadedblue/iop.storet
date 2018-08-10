@@ -32,11 +32,11 @@ repositories {
 }
 
 dependencies {
+    api project(':iox.utils')
 	api "iox:iox.tictoc:1.2.0"
     api "iox.d4m:accumulo.d4m:0.0.1"
     api "iox.accumulo:accumulo.access:0.0.1"
     api "args4j:args4j:2.33"
-    api "iox:iox.utils:1.1.0"
 	
 	// Hazoo
     api "org.apache.accumulo:accumulo-core:${accver}"
