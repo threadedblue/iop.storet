@@ -16,4 +16,3 @@ include 'services:webservice'
 */
 
 rootProject.name = 'xml2xpath'
-includeFlat 'iox.utils'

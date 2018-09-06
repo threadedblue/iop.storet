@@ -1,4 +1,5 @@
 apply plugin: 'application'
+apply plugin: 'java'
 apply plugin: 'java-library'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
@@ -6,8 +7,8 @@ apply plugin: 'maven'
 applicationName = 'xml2xpath'
 sourceCompatibility = 1.8
 mainClassName = 'iox.xml2xpath.XML2XPathDriver'
-version = '0.0.1'
 group 'iox'
+version = '0.0.1'
 
 configure(install.repositories.mavenInstaller) {
     pom.project {
@@ -20,36 +21,35 @@ configure(install.repositories.mavenInstaller) {
 
 def jarFile = buildDir.name + "/libs/" + applicationName + "-" + version + ".jar"
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'IOP Store Retrieve', 'Implementation-Version': version
-    }
-}
-
 repositories {
     jcenter()
     maven {url 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath;}
 }
 
+clean {
+    delete "${buildDir}" 
+    delete "${applicationName}" 
+}
+
 dependencies {
-    api project(':iox.utils')
-	api "iox:iox.tictoc:1.2.0"
-    api "iox.d4m:accumulo.d4m:0.0.1"
-    api "iox.accumulo:accumulo.access:0.0.1"
-    api "args4j:args4j:2.33"
+    implementation "iox:iox.utils:1.2.0"
+	implementation "iox:iox.tictoc:1.2.0"
+    implementation "iox.d4m:accumulo.d4m:0.0.1"
+    implementation "iox.accumulo:accumulo.access:0.0.1"
+    implementation "args4j:args4j:2.33"
 	
 	// Hazoo
-    api "org.apache.accumulo:accumulo-core:${accver}"
-    api "org.apache.accumulo:accumulo-fate:${accver}"
-    api "org.apache.accumulo:accumulo-start:${accver}"
-    api "org.apache.accumulo:accumulo-trace:${accver}"
-    api "org.apache.hadoop:hadoop-client:${hadver}"
-    api "org.apache.zookeeper:zookeeper:${zoover}"
+    implementation "org.apache.accumulo:accumulo-core:${accver}"
+    implementation "org.apache.accumulo:accumulo-fate:${accver}"
+    implementation "org.apache.accumulo:accumulo-start:${accver}"
+    implementation "org.apache.accumulo:accumulo-trace:${accver}"
+    implementation "org.apache.hadoop:hadoop-client:${hadver}"
+    implementation "org.apache.zookeeper:zookeeper:${zoover}"
 	
 	// XML 
-	api "iox.xml:iox.input.mr:0.0.1"
-    api "org.apache.logging.log4j:log4j-slf4j-impl:${logver}" 
-	api group: "commons-collections", name: "commons-collections", version: "3.2"
+	implementation "iox.xml:iox.input.mr:0.0.1"
+    implementation "org.apache.logging.log4j:log4j-slf4j-impl:${logver}" 
+	implementation group: "commons-collections", name: "commons-collections", version: "3.2"
 	
     testCompile "junit:junit:4.+"
 }

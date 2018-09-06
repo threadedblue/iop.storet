@@ -2,7 +2,6 @@
 
 DIR=`pwd`
 NAME="xml2xpath"
-cp -r $NAME ~/
-cd ~/$NAME
-java -jar $NAME-0.0.1.jar -i /ccd/ccd1/ccd-0 -t ccd -ow -fs hdfs://haz00:9000 -l acccumulo -zk haz00:2181 
+cd $NAME
+time java -jar $NAME-0.0.1.jar -i /ccd/ccd1 -t ccddd -fs hdfs://haz00:9000 -l accumulo -zk haz00:2181 -ow -r
 cd $DIR

@@ -12,14 +12,16 @@
 		</File>
 	</Appenders>
 	<Loggers>
-         <Logger name="iox.accumulo.d4m" level="TRACE">
+         <Logger name="iox.accumulo.d4m" level="INFO">
             <AppenderRef ref="Console" />
         </Logger>       
         <Logger name="iox.xml2xpath" level="DEBUG">
             <AppenderRef ref="Console" />
+            <AppenderRef ref="File" />
         </Logger>		
-        <Logger name="iox.utils" level="ERROR">
+        <Logger name="iox.utils" level="DEBUG">
             <AppenderRef ref="Console" />
+            <AppenderRef ref="File" />
         </Logger>       
 <!--         <Logger name="iox.xml2xpath.XML2XPathReducer" level="TRACE">
             <AppenderRef ref="Console" />
