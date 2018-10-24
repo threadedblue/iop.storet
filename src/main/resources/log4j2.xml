@@ -15,7 +15,7 @@
          <Logger name="iox.accumulo.d4m" level="INFO">
             <AppenderRef ref="Console" />
         </Logger>       
-        <Logger name="iox.xml2xpath" level="DEBUG">
+        <Logger name="iox.xml2xpath" level="INFO">
             <AppenderRef ref="Console" />
             <AppenderRef ref="File" />
         </Logger>		
