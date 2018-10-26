@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DIR=`pwd`
-NAME="ccd.bfs"
+NAME="xml2xpath"
 cd $NAME
-time java -jar $NAME-0.0.1.jar -i /ccd -o ccdRT -fs hdfs://haz00:9000 -l accumulo -zk haz00:2181 -ow
+time java -jar $NAME-0.0.1.jar -i /ccd -o /ccdxpath -r -ow
 cd $DIR

@@ -1,7 +1,6 @@
-# CCD2D4M (Continuity of Care Document to Dynamic Distributed Dimensional Data Model
-Dependencies
-iop.xslt
-iop.ccd.shread
-iop.accumulo.d4m
-iop.tictoc
+# CCD2XPath (Continuity of Care Document to XPath
+Dependencies:  
+iox.utils
+iox.tictoc
 
+Currently uses DDXPath from iox.utils.  DDXPath currently does not include element content. It does include attribute and their values.
