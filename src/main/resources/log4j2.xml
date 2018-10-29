@@ -12,14 +12,14 @@
 		</File>
 	</Appenders>
 	<Loggers>
+		<Logger name="iox.utils" level="INFO">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>       
          <Logger name="iox.xml2xpath" level="INFO">
             <AppenderRef ref="Console" />
             <AppenderRef ref="File" />
         </Logger>		
-        <Logger name="iox.utils" level="INFO">
-            <AppenderRef ref="Console" />
-            <AppenderRef ref="File" />
-        </Logger>       
         <Logger name="org.apache.hadoop.mapred" level="ERROR">
             <AppenderRef ref="Console" />
         </Logger>
